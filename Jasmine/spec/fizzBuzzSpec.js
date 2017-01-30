@@ -1,25 +1,15 @@
-//
-// Print the numbers from 1 to 100
-// If a number is divisible by 3 print "Fizz" instead
-// If a number is divisible by 5 print "Buzz" instead
-// If a number is divisible by 3 and 5 print "FizzBuzz" instead
-//
-//
-// describe('Fizzbuzz', function() {
-//   it("prints everything from 1 to 100", function() {
-//
-//   });
-// });
-
 describe('Fizzbuzz', function() {
 
   var fizzbuzz;
 
+  beforeEach(function() {
+    fizzbuzz = new Fizzbuzz();
+  });
+
   describe('knows when a number is', function() {
 
     it('divisible by 3', function() {
-      fizzbuzz = new Fizzbuzz();
-      expect(fizzbuzz.isDivisibleByThree(3)).toBe(true);
+      expect(fizzbuzz._isDivisibleBy(3, 3)).toBe(true);
     });
 
   });
@@ -27,8 +17,7 @@ describe('Fizzbuzz', function() {
   describe('knows when a number is NOT', function() {
 
     it('not divisible by 3', function() {
-      fizzbuzz = new Fizzbuzz();
-      expect(fizzbuzz.isDivisibleByThree(4)).toBe(false);
+      expect(fizzbuzz._isDivisibleBy(4, 3)).toBe(false);
     });
 
   });
@@ -36,8 +25,7 @@ describe('Fizzbuzz', function() {
   describe('knows when a number is', function() {
 
     it('divisible by 5', function() {
-      fizzbuzz = new Fizzbuzz();
-      expect(fizzbuzz.isDivisibleByFive(5)).toBe(true);
+      expect(fizzbuzz._isDivisibleBy(5, 5)).toBe(true);
     });
 
   });
@@ -45,8 +33,7 @@ describe('Fizzbuzz', function() {
   describe('knows when a number is NOT', function() {
 
     it('not divisible by 5', function() {
-      fizzbuzz = new Fizzbuzz();
-      expect(fizzbuzz.isDivisibleByFive(7)).toBe(false);
+      expect(fizzbuzz._isDivisibleBy(7, 5)).toBe(false);
     });
 
   });
@@ -54,8 +41,7 @@ describe('Fizzbuzz', function() {
   describe('knows when a number is', function() {
 
     it('divisible by 15', function() {
-      fizzbuzz = new Fizzbuzz();
-      expect(fizzbuzz.isDivisibleByFifteen(15)).toBe(true);
+      expect(fizzbuzz._isDivisibleByFifteen(15, 15)).toBe(true);
     });
 
   });
@@ -63,8 +49,23 @@ describe('Fizzbuzz', function() {
   describe('knows when a number is NOT', function() {
 
     it('not divisible by 15', function() {
-      fizzbuzz = new Fizzbuzz();
-      expect(fizzbuzz.isDivisibleByFifteen(16)).toBe(false);
+      expect(fizzbuzz._isDivisibleByFifteen(16, 15)).toBe(false);
+    });
+
+  });
+
+  describe('when playing, says', function() {
+
+    it('"Fizz" when a number is divisible by 3', function() {
+      expect(fizzbuzz.says(3)).toEqual("Fizz");
+    });
+
+    it('"Buzz" when a number is divisible by 5', function() {
+      expect(fizzbuzz.says(5)).toEqual("Buzz");
+    });
+
+    it('"Fizzbuzz" when a number is divisible by 15', function() {
+      expect(fizzbuzz.says(15)).toEqual("Fizzbuzz");
     });
 
   });
